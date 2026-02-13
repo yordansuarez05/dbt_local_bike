@@ -28,7 +28,7 @@ models:
         tests:
           - not_null
           - unique
-  
+
   - name: stg_local_bike_raw__products
     description: "Staging table for products"
     columns:
@@ -46,6 +46,13 @@ models:
         tests:
           - not_null
           - unique
+
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_local_bike_raw__customers')
+              field: customer_id
 
   - name: stg_local_bike_raw__order_items
     description: "Staging table for order items"
@@ -82,21 +89,3 @@ models:
         tests:
           - not_null
           - unique
-
-
-models:
-  - name: stg_local_bike_raw__orders
-    columns:
-      - name: order_id
-        tests:
-          - not_null
-          - unique
-
-      - name: customer_id
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_local_bike_raw__customers')
-              field: customer_id
-
-
