@@ -15,11 +15,8 @@ select
 
     -- Business metrics
     quantity,
-
     round(list_price, 2) as list_price,
     round(discount_rate, 4) as discount_rate,
     round(discount_percentage, 2) as discount_percentage,
-
     round(revenue, 2) as revenue
-
 from {{ ref('int_sales_enriched') }}
