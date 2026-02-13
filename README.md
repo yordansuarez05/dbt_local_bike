@@ -1,15 +1,68 @@
-Welcome to your new dbt project!
+# DBT Local Bike Project
 
-### Using the starter project
+## Project Objective
 
-Try running the following commands:
-- dbt run
-- dbt test
+This project transforms raw sales data from a bike retail company into an analytical data model using dbt and BigQuery.
+The final objective is to build a simple and clear Star Schema to support Business Intelligence reporting.
+---
+## Architecture
 
+The project follows a layered approach:
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+### 1. Staging Layer
+- Clean raw data
+- Rename columns
+- Trim text fields
+- Basic data quality tests (not_null, unique, relationships)
+
+### 2. Intermediate Layer
+- Business logic implementation
+- Revenue calculation
+- Discount formatting
+- Performance metrics
+- Stock analysis
+
+### 3. Marts Layer (Star Schema)
+Final analytical layer structured as:
+
+Fact Table:
+- fct_sales
+
+Dimension Tables:
+- dim_customers
+- dim_products
+- dim_stores
+- dim_staff
+
+---
+
+## Revenue Formula
+
+Revenue is calculated as:
+
+quantity * list_price * (1 - discount)
+
+Values are rounded to 2 decimals for BI readability.
+
+---
+
+## Data Quality
+
+Tests implemented:
+- Primary key validation (not_null + unique)
+- Relationship validation between fact and dimensions
+
+---
+
+## Tools Used
+
+- dbt Cloud
+- BigQuery
+- GitHub
+- Star Schema modeling approach
+
+---
+
+## Status
+
+Project operational and ready for BI visualization.
