@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "Product dimension table with price segmentation"
+
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique
+
+      - name: price_category
+        description: "Product price segmentation"
+        tests:
+          - not_null
